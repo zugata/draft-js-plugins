@@ -10,7 +10,6 @@ export default function onDropFile(config) {
   return function onDropFileInner(selection, files, { getEditorState, setEditorState }) {
     // TODO need to make sure the correct image block is added
     // TODO -> addImage must be passed in. content type matching should happen
-
     // TODO make sure the Form building also works fine with S3 direct upload
 
     // Get upload function from config or editor props
@@ -51,7 +50,7 @@ export default function onDropFile(config) {
         setEditorState(editorStateWithPlaceholders);
 
         // Perform upload
-        handleUpload(data, (uploadedFiles) => {
+        handleUpload && handleUpload(data, (uploadedFiles) => {
           const editorStateWithImages = uploadedFiles.reduce((editorState, file) => {
             const placeholderBlock = getPlaceholderBlock(editorState, file);
 
