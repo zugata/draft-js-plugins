@@ -1,6 +1,5 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { expect } from 'chai';
 import sinon from 'sinon';
 
 import { MentionSuggestions } from '../index';
@@ -72,12 +71,12 @@ describe('MentionSuggestions Component', () => {
     );
 
     suggestions.instance().openDropdown();
-    expect(suggestions.state().isActive).to.equal(true);
+    expect(suggestions.state().isActive).toBe(true);
 
     suggestions.setProps({
       suggestions: [],
     });
-    expect(suggestions.state().isActive).to.equal(false);
+    expect(suggestions.state().isActive).toBe(false);
   });
 
   it('The popoverComponent prop changes the popover component', () => {
@@ -92,14 +91,14 @@ describe('MentionSuggestions Component', () => {
     );
 
     suggestions.instance().openDropdown();
-    expect(suggestions.find('[data-test-test]')).to.have.length(1);
+    expect(suggestions.find('[data-test-test]')).toHaveLength(1);
   });
 
   it('The popoverComponent recieves the children', () => {
     let called = false;
     const PopoverComponent = ({ children, ...props }) => {
       called = true;
-      expect(React.Children.count(children)).to.equal(mentions.length);
+      expect(React.Children.count(children)).toBe(mentions.length);
       return <div {...props}>{children}</div>;
     };
 
@@ -110,7 +109,7 @@ describe('MentionSuggestions Component', () => {
     );
 
     suggestions.instance().openDropdown();
-    expect(called).to.equal(true);
+    expect(called).toBe(true);
   });
 
   it('The popoverComponent prop uses div by default', () => {
@@ -120,6 +119,6 @@ describe('MentionSuggestions Component', () => {
     );
 
     suggestions.instance().openDropdown();
-    expect(suggestions.find('div[data-findme]')).to.have.length(1);
+    expect(suggestions.find('div[data-findme]')).toHaveLength(1);
   });
 });

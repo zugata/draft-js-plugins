@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { expect } from 'chai';
 import { EditorState } from 'draft-js';
 import createUndoPlugin from '../index';
 
@@ -51,7 +50,7 @@ describe('UndoPlugin Config', () => {
     const undoResult = mount(
       <UndoButton />
     );
-    expect(redoResult.find('button')).to.have.prop('className').to.contain('custom-class-name');
-    expect(undoResult.find('button')).to.have.prop('className').to.contain('custom-class-name');
+    expect(redoResult.find('button')).to.have.prop('className').toContain('custom-class-name');
+    expect(undoResult.find('button')).to.have.prop('className').toContain('custom-class-name');
   });
 });

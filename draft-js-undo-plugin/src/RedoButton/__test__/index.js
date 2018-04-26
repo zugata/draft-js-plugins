@@ -53,8 +53,8 @@ describe('RedoButton', () => {
         children="redo"
       />
     );
-    expect(result).to.have.prop('className').to.contain('redo');
-    expect(result).to.have.prop('className').to.contain('custom-class-name');
+    expect(result).to.have.prop('className').toContain('redo');
+    expect(result).to.have.prop('className').toContain('custom-class-name');
   });
 
   it('adds disabled attribute to button if the getRedoStack is empty', () => {
@@ -64,7 +64,7 @@ describe('RedoButton', () => {
         children="redo"
       />
     );
-    expect(result.find('button')).prop('disabled').to.equal(true);
+    expect(result.find('button')).prop('disabled').toBe(true);
   });
 
   it('removes disabled attribute from button if the getRedoStack is not empty', () => {
@@ -87,7 +87,7 @@ describe('RedoButton', () => {
         children="redo"
       />
     );
-    expect(result.find('button')).prop('disabled').to.equal(false);
+    expect(result.find('button')).prop('disabled').toBe(false);
   });
 
   it('triggers an update with redo when the button is clicked', () => {

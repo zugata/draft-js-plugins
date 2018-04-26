@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { mount, shallow } from 'enzyme';
-import { expect } from 'chai';
 import { EditorState, DefaultDraftBlockRenderMap, Editor } from 'draft-js';
 import { Map } from 'immutable';
 import sinon from 'sinon';
@@ -93,7 +92,7 @@ describe('Editor', () => {
         />
       );
       const pluginEditor = result.instance();
-      expect(pluginEditor.resolvePlugins()[0]).to.include.keys('keyBindingFn');
+      expect(pluginEditor.resolvePlugins()[0]).toEqual(expect.arrayContaining('keyBindingFn'));
     });
 
     it('without the defaultKeyBindings plugin if deactivated', () => {
@@ -105,7 +104,7 @@ describe('Editor', () => {
         />
       );
       const pluginEditor = result.instance();
-      expect(pluginEditor.resolvePlugins()).to.have.lengthOf(0);
+      expect(pluginEditor.resolvePlugins()).toHaveLength(0);
     });
   });
 
@@ -353,7 +352,7 @@ describe('Editor', () => {
         },
       };
       const pluginEditor = result.instance();
-      expect(pluginEditor.resolveCustomStyleMap()).to.deep.equal(expected);
+      expect(pluginEditor.resolveCustomStyleMap()).toEqual(expected);
     });
 
     it('combines customStyleMap props from plugins and the editor', () => {
@@ -401,7 +400,7 @@ describe('Editor', () => {
         },
       };
       const pluginEditor = result.instance();
-      expect(pluginEditor.resolveCustomStyleMap()).to.deep.equal(expected);
+      expect(pluginEditor.resolveCustomStyleMap()).toEqual(expected);
     });
 
     it('combines customStyleMap props from plugins and the editor', () => {
@@ -449,7 +448,7 @@ describe('Editor', () => {
         },
       };
       const pluginEditor = result.instance();
-      expect(pluginEditor.resolveCustomStyleMap()).to.deep.equal(expected);
+      expect(pluginEditor.resolveCustomStyleMap()).toEqual(expected);
     });
 
     it('combines the blockRenderMap from all plugins', () => {
@@ -473,7 +472,7 @@ describe('Editor', () => {
         test: { element: 'test' },
       }));
       const pluginEditor = result.instance();
-      expect(pluginEditor.resolveblockRenderMap()).to.deep.equal(expected);
+      expect(pluginEditor.resolveblockRenderMap()).toEqual(expected);
     });
 
     it('combines blockRenderMap props from plugins and the editor', () => {
@@ -504,7 +503,7 @@ describe('Editor', () => {
       }));
 
       const pluginEditor = result.instance();
-      expect(pluginEditor.resolveblockRenderMap()).to.deep.equal(expected);
+      expect(pluginEditor.resolveblockRenderMap()).toEqual(expected);
     });
 
     it('returns the component reference when we call the getEditorRef inside of a plugin', () => {
@@ -521,7 +520,7 @@ describe('Editor', () => {
       );
       const draftEditorComponent = (pluginEditorComponent.find(Editor)).nodes[0];
       draftEditorComponent.focus();
-      expect(spy.getCall(1).args[0]).to.deep.equal(draftEditorComponent);
+      expect(spy.getCall(1).args[0]).toEqual(draftEditorComponent);
     });
   });
 
@@ -656,8 +655,8 @@ describe('Editor', () => {
 
       expect(decoratorComponent).has.been.called();
       expect(pluginComponent).has.been.called();
-      expect(decoratorComponents.length).to.equal(1);
-      expect(pluginComponents.length).to.equal(1);
+      expect(decoratorComponents.length).toBe(1);
+      expect(pluginComponents.length).toBe(1);
     });
 
     it('uses both custom and simple decorators in plugins', () => {

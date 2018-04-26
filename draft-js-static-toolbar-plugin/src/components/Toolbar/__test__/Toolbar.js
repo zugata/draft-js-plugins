@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { expect } from 'chai';
 import { mount } from 'enzyme';
 import Toolbar from '../index';
 
@@ -41,15 +40,15 @@ describe('Toolbar', () => {
       />
     );
 
-    expect(wrapper.find('.initial').length).to.equal(1);
+    expect(wrapper.find('.initial').length).toBe(1);
 
     setTimeout(() => {
-      expect(wrapper.find('.initial').length).to.equal(0);
-      expect(wrapper.find('.overridden').length).to.equal(1);
+      expect(wrapper.find('.initial').length).toBe(0);
+      expect(wrapper.find('.overridden').length).toBe(1);
 
       setTimeout(() => {
-        expect(wrapper.find('.initial').length).to.equal(1);
-        expect(wrapper.find('.overridden').length).to.equal(0);
+        expect(wrapper.find('.initial').length).toBe(1);
+        expect(wrapper.find('.overridden').length).toBe(0);
         done();
       });
     });

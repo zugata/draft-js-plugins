@@ -1,4 +1,3 @@
-import { expect } from 'chai';
 import utils from '../video/utils';
 
 describe('CreateVideoPlugin\'s  utils can parse correct youtube and vimeo ulr without config', () => {
@@ -13,7 +12,7 @@ describe('CreateVideoPlugin\'s  utils can parse correct youtube and vimeo ulr wi
       srcType: 'youtube',
       url: 'https://www.youtube.com/watch?v=YsRMoWYGLNA',
     };
-    expect(src).to.deep.equal(expectSrc);
+    expect(src).toEqual(expectSrc);
   });
   it('default video plugin handle vimeo url', () => {
     const url = 'https://vimeo.com/153979733';
@@ -26,6 +25,6 @@ describe('CreateVideoPlugin\'s  utils can parse correct youtube and vimeo ulr wi
       srcType: 'vimeo',
       url: 'https://vimeo.com/153979733',
     };
-    expect(src).to.deep.equal(expectSrc);
+    expect(src).toEqual(expectSrc);
   });
 });
