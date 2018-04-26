@@ -54,8 +54,9 @@ describe('Editor', () => {
           plugins={[]}
         />
       );
-      expect(result.node.props.onChange).toEqual(changeSpy);
-      expect(result.node.props.editorState).toEqual(editorState);
+      console.log('yo result', result)
+      expect(result.getElement().props.onChange).toEqual(changeSpy);
+      expect(result.getElement().props.editorState).toEqual(editorState);
     });
 
     it('without the plugins property provided', () => {
@@ -65,8 +66,8 @@ describe('Editor', () => {
           onChange={changeSpy}
         />
       );
-      expect(result.node.props.onChange).toEqual(changeSpy);
-      expect(result.node.props.editorState).toEqual(editorState);
+      expect(result.getElement().props.onChange).toEqual(changeSpy);
+      expect(result.getElement().props.editorState).toEqual(editorState);
     });
 
     it('with a plugin provided', () => {
@@ -80,8 +81,8 @@ describe('Editor', () => {
           plugins={plugins}
         />
       );
-      expect(result.node.props.onChange).toEqual(changeSpy);
-      expect(result.node.props.editorState).toEqual(editorState);
+      expect(result.getElement().props.onChange).toEqual(changeSpy);
+      expect(result.getElement().props.editorState).toEqual(editorState);
     });
 
     it('and by default adds the defaultKeyBindings plugin', () => {
@@ -104,7 +105,7 @@ describe('Editor', () => {
         />
       );
       const pluginEditor = result.instance();
-      expect(pluginEditor.resolvePlugins()).toHaveLength(0);
+      expect(pluginEditor.resolvePlugins().length).toBe(0);
     });
   });
 
@@ -135,7 +136,7 @@ describe('Editor', () => {
         />
       );
 
-      const draftEditor = result.node;
+      const draftEditor = result.getElement();
       const plugin = plugins[0];
       draftEditor.props.onUpArrow();
       expect(plugin.onUpArrow).has.been.calledOnce();
@@ -169,7 +170,7 @@ describe('Editor', () => {
       );
 
       const pluginEditor = result.instance();
-      const draftEditor = result.node;
+      const draftEditor = result.getElement();
       const plugin = plugins[0];
       const expectedSecondArgument = {
         getEditorState: pluginEditor.getEditorState,
@@ -208,7 +209,7 @@ describe('Editor', () => {
         />
       );
 
-      const pluginEditor = result.node;
+      const pluginEditor = result.getElement();
       const plugin = plugins[0];
       const expectedArgument = {
         getEditorState: pluginEditor.getEditorState,
@@ -239,7 +240,7 @@ describe('Editor', () => {
         />
       );
 
-      const draftEditor = result.node;
+      const draftEditor = result.getElement();
       draftEditor.props.handleKeyCommand('command');
       expect(plugins[0].handleKeyCommand).has.been.calledOnce();
       expect(plugins[1].handleKeyCommand).has.not.been.called();
@@ -272,7 +273,7 @@ describe('Editor', () => {
         />
       );
 
-      const draftEditor = result.node;
+      const draftEditor = result.getElement();
       draftEditor.props.handleKeyCommand('command');
       expect(plugins[0].handleKeyCommand).has.been.calledOnce();
       expect(plugins[1].handleKeyCommand).has.been.calledOnce();
@@ -300,7 +301,7 @@ describe('Editor', () => {
       );
 
       const pluginEditor = result.instance();
-      const draftEditor = result.node;
+      const draftEditor = result.getElement();
       const plugin = plugins[0];
       const expectedSecondArgument = {
         getEditorState: pluginEditor.getEditorState,
@@ -538,7 +539,7 @@ describe('Editor', () => {
           plugins={[]}
         />
       );
-      draftEditor = result.node;
+      draftEditor = result.getElement();
       pluginEditor = result.instance();
     });
 
@@ -577,7 +578,7 @@ describe('Editor', () => {
           onUpArrow={customHook}
         />
       );
-      const draftEditor = result.node;
+      const draftEditor = result.getElement();
       draftEditor.props.onUpArrow();
       expect(plugin.onUpArrow).has.not.been.called();
       expect(customHook).has.been.calledOnce();
@@ -595,7 +596,7 @@ describe('Editor', () => {
           blockRendererFn={customHook}
         />
       );
-      const draftEditor = result.node;
+      const draftEditor = result.getElement();
       draftEditor.props.blockRendererFn();
       expect(plugin.blockRendererFn).has.been.called();
       expect(customHook).has.been.called();

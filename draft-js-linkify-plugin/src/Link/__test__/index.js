@@ -4,7 +4,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Link from '../index';
 
-ddescribe('Link', () => {
+describe('Link', () => {
   it('applies the className based on the theme property `link`', () => {
     const theme = { link: 'custom-class-name' };
     const result = shallow(<Link theme={theme} />);

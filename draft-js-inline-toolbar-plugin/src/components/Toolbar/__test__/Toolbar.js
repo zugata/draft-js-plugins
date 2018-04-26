@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { mount } from 'enzyme';
 import Toolbar from '../index';
 
+jest.useFakeTimers()
+
 describe('Toolbar', () => {
   it('allows children to override the content', (done) => {
     const structure = [class Child extends Component {

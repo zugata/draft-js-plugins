@@ -81,7 +81,7 @@ describe('MentionSuggestions Component', () => {
 
   it('The popoverComponent prop changes the popover component', () => {
     const PopoverComponent = ({ children, ...props }) => (
-      <div data-test-test {...props}>{children}</div>
+      <div data-test="test" {...props}>{children}</div>
     );
 
     const props = defaultProps();
@@ -91,7 +91,8 @@ describe('MentionSuggestions Component', () => {
     );
 
     suggestions.instance().openDropdown();
-    expect(suggestions.find('[data-test-test]')).toHaveLength(1);
+    console.log('yoyoyoyo suggestions', suggestions.debug())
+    expect(suggestions.is('.test')).toBe(true);
   });
 
   it('The popoverComponent recieves the children', () => {
@@ -119,6 +120,6 @@ describe('MentionSuggestions Component', () => {
     );
 
     suggestions.instance().openDropdown();
-    expect(suggestions.find('div[data-findme]')).toHaveLength(1);
+    expect(suggestions.is('[data-findme]')).toBe(true);
   });
 });
