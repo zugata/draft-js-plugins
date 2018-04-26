@@ -54,8 +54,8 @@ describe('Editor', () => {
           plugins={[]}
         />
       );
-      expect(result.node.props.onChange).to.eq(changeSpy);
-      expect(result.node.props.editorState).to.eq(editorState);
+      expect(result.node.props.onChange).toEqual(changeSpy);
+      expect(result.node.props.editorState).toEqual(editorState);
     });
 
     it('without the plugins property provided', () => {
@@ -65,8 +65,8 @@ describe('Editor', () => {
           onChange={changeSpy}
         />
       );
-      expect(result.node.props.onChange).to.eq(changeSpy);
-      expect(result.node.props.editorState).to.eq(editorState);
+      expect(result.node.props.onChange).toEqual(changeSpy);
+      expect(result.node.props.editorState).toEqual(editorState);
     });
 
     it('with a plugin provided', () => {
@@ -80,8 +80,8 @@ describe('Editor', () => {
           plugins={plugins}
         />
       );
-      expect(result.node.props.onChange).to.eq(changeSpy);
-      expect(result.node.props.editorState).to.eq(editorState);
+      expect(result.node.props.onChange).toEqual(changeSpy);
+      expect(result.node.props.editorState).toEqual(editorState);
     });
 
     it('and by default adds the defaultKeyBindings plugin', () => {
@@ -680,8 +680,8 @@ describe('Editor', () => {
       setTimeout(() => {
         const newText = 'Yoyoyoyo dude';
         comp.setProps({ text: newText });
-        expect(comp.state('editorState').getDecorator().decorators.size).to.eq(decoratorNumber);
-        expect(comp.state('editorState').getCurrentContent().getPlainText()).to.eq(newText);
+        expect(comp.state('editorState').getDecorator().decorators.size).toEqual(decoratorNumber);
+        expect(comp.state('editorState').getCurrentContent().getPlainText()).toEqual(newText);
         done();
       }, 100);
     });

@@ -5,7 +5,7 @@ describe('CreateVideoPlugin\'s  utils can parse correct youtube and vimeo ulr wi
     const url = 'https://www.youtube.com/watch?v=YsRMoWYGLNA';
     const { isYoutube, getYoutubeSrc } = utils;
     const result = isYoutube(url);
-    expect(result).to.eq(true);
+    expect(result).toEqual(true);
     const src = getYoutubeSrc(url);
     const expectSrc = {
       srcID: 'YsRMoWYGLNA',
@@ -18,7 +18,7 @@ describe('CreateVideoPlugin\'s  utils can parse correct youtube and vimeo ulr wi
     const url = 'https://vimeo.com/153979733';
     const { isVimeo, getVimeoSrc } = utils;
     const result = isVimeo(url);
-    expect(result).to.eq(true);
+    expect(result).toEqual(true);
     const src = getVimeoSrc(url);
     const expectSrc = {
       srcID: '153979733',
