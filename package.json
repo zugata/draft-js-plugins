@@ -122,6 +122,10 @@
     "union-class-names": "^1.0.0"
   },
   "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest",
+      ".+\\.(css|styl|less|sass|scss)$": "<rootDir>/node_modules/jest-css-modules-transform"
+    },
     "testMatch": [
       "**/__test?(s)__/**/*.js?(x)"
     ],
