@@ -38,4 +38,6 @@ export default (config = {}) => {
 
 export {
   Separator,
+  buttonStyles,
+  toolbarStyles,
 };
